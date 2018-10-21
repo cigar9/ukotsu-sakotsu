@@ -82,3 +82,4 @@ dist
 
 # contentful config
 .contentful.json
+.env
