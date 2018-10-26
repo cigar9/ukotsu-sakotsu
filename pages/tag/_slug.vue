@@ -3,10 +3,12 @@
     <h1>tag: {{ tag }}</h1>
     <section class="index">
       <card v-for="post in posts"
-      v-bind:key="post.fields.slug"
-      :title="post.fields.title"
-      :slug="post.fields.slug"
-      :publishedAt="post.fields.publishedAt"/>
+        v-bind:key="post.fields.slug"
+        :title="post.fields.title"
+        :slug="post.fields.slug"
+        :publishedAt="post.fields.publishedAt"
+        :description="post.fields.description"
+        :tags="post.fields.tags"/>
     </section>
   </div>
 </template>
@@ -53,9 +55,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .index {
-    > * ~ * {
-      margin-top: 20px;
-    }
+.index {
+  > * ~ * {
+    margin-top: 20px;
   }
+}
 </style>

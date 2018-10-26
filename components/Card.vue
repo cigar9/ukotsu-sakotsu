@@ -1,40 +1,79 @@
 <template>
-  <article class="card">
-    <nuxt-link v-bind:to="{ name: 'blog-slug', params: { slug: slug }}" class="wrapper">
-      <h1 class="card_title">{{ title }}</h1>
-      <p class="card_date">{{ (new Date(publishedAt)).toLocaleDateString() }}</p>
+  <article class="p-card">
+    <nuxt-link v-bind:to="{ name: 'blog-slug', params: { slug: slug }}" class="p-card__link">
+      <h1 class="p-card__ttl">{{ title }}</h1>
+      <div class="p-card__meta">
+        <p class="p-card__date">{{ (new Date(publishedAt)).toLocaleDateString() }}</p>
+        <ul class="p-card__tags">
+          <li v-for="tag in tags" class="p-card__tag">{{ tag }}</li>
+        </ul>
+      </div>
+      <p class="p-card__description">{{ description }}</p>
     </nuxt-link>
   </article>
 </template>
 
 <script>
+
 export default {
-  props: ['title', 'slug', 'publishedAt']
+  props: ['title', 'slug', 'publishedAt', 'description', 'tags']
 }
 </script>
 
 <style lang="scss" scoped>
-  .card {
-    width: 100%;
-    height: auto;
-    box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.2);
-    border: 0.5px solid rgb(57, 72, 85);
+.p-card {
+  &__ttl {
+    @include font-size(2);
+    font-weight: bold;
+    font-family: "Sawarabi Mincho", serif;
+    letter-spacing: 0.1em;
   }
 
-  .wrapper {
+  &__link {
+    color: $font-color;
     text-decoration: none;
     display: block;
     height: 100%;
+    padding: 2rem 0;
+    @include transition(background);
+
+    &:hover {
+      background: #fff;
+    }
   }
 
-  .card_title {
-    font-size: 1.2rem;
-    margin: 0;
+  &__meta {
+    display: flex;
+    align-items: center;
+
+    > * ~ * {
+      margin-left: 1rem;
+    }
   }
 
-  .card_date {
-    font-size: 0.7rem;
-    color: rgb(57, 72, 85);
-    text-align: right;
+  &__date {
+    color: $font-color-light;
   }
+
+  &__tags {
+    display: flex;
+    align-items: center;
+
+    > * ~ * {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__tag {
+    color: $font-color-light;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    @include font-size(1.2);
+    padding: 0.2em 0.5em;
+  }
+
+  & ~ & {
+    border-top: 1px dashed #ccc;
+  }
+}
 </style>

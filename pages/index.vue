@@ -3,17 +3,19 @@
     <div class="categories">
       <p>タグ一覧</p>
       <ul class="categories__body">
-        <li v-for="tag in tags" :uma="unchi">
+        <li v-for="tag in tags">
           <nuxt-link v-bind:to="{ name: 'tag-slug', params: { slug: tag }}">{{tag}}</nuxt-link>
         </li>
       </ul>
     </div>
     <section class="index">
       <card v-for="post in posts"
-      v-bind:key="post.fields.slug"
-      :title="post.fields.title"
-      :slug="post.fields.slug"
-      :publishedAt="post.fields.publishedAt"/>
+        v-bind:key="post.fields.slug"
+        :title="post.fields.title"
+        :slug="post.fields.slug"
+        :publishedAt="post.fields.publishedAt"
+        :description="post.fields.description"
+        :tags="post.fields.tags"/>
     </section>
   </div>
 
@@ -29,14 +31,14 @@ const client = createClient()
 // 重複を削除した配列を返す機能
 const getTags = (entries) => {
   const arr = []
-  entries.forEach(function (entry) {
+  entries.forEach(function(entry) {
     if (entry.fields.tags) {
       entry.fields.tags.forEach((hoge) => {
         arr.push(hoge)
       })
     }
   })
-  const b = arr.filter(function (x, i, self) {
+  const b = arr.filter(function(x, i, self) {
     return self.indexOf(x) === i
   })
   return b
@@ -75,24 +77,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .index {
-    margin-top: 20px;
+.index {
+  margin-top: 20px;
+}
+
+.categories {
+  background: #f5f5f5;
+  padding: 10px 20px;
+
+  &__body {
+    display: flex;
 
     > * ~ * {
-      margin-top: 20px;
+      margin-left: 3em;
     }
   }
-
-  .categories {
-    background: #f5f5f5;
-    padding: 10px 20px;
-
-    &__body {
-      display: flex;
-
-      > * ~ * {
-        margin-left: 3em;
-      }
-    }
-  }
+}
 </style>

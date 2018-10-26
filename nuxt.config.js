@@ -24,19 +24,23 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/sawarabimincho.css' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/sawarabigothic.css' }
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#3B8070' },
 
   /*
   ** Global CSS
   */
-  css: [],
+  css: [
+    '~assets/sass/global.scss'
+  ],
 
   /*
   ** Plugins to load before mounting the App
@@ -51,7 +55,14 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    [
+      'nuxt-sass-resources-loader',
+      [
+        '@/assets/sass/foundation/_variables.scss',
+        '@/assets/sass/foundation/_mixin.scss'
+      ]
+    ]
   ],
   /*
   ** Axios module configuration

@@ -1,34 +1,27 @@
 <template>
   <div>
-    <header>
-      <h1 class="title">
-        <nuxt-link to="/">UKOTSU-SAKOTSU</nuxt-link>
-      </h1>
-    </header>
-    <main class="container">
+    <my-header/>
+    <main class="l-main">
       <nuxt/>
     </main>
   </div>
 </template>
 
-<style>
-  html {
-    font-family: "Source Sans Pro", 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, sans-serif;
-    font-size: 16px;
-  }
+<script>
+import myHeader from '~/components/Header.vue'
 
-  h1, h2, h3 {
-    font-weight: normal;
+export default {
+  components: {
+    myHeader
   }
+}
+</script>
 
-  .title {
-    color: #35495e;
-    margin: 100px 0 30px;
-    text-align: center;
-  }
-
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
+<style lang="scss" scoped>
+.l-main {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+  padding: 0 0 5rem;
+}
 </style>

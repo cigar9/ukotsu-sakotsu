@@ -1,0 +1,124 @@
+// メディアクエリ （デスクトップファースト）
+// --------------------
+@mixin mq-lg {
+  @media only screen and (max-width: $mq-lg + px) {
+    @content;
+  }
+}
+
+@mixin mq-md {
+  @media only screen and (max-width: $mq-md + px) {
+    @content;
+  }
+}
+
+@mixin mq-sm {
+  @media only screen and (max-width: $mq-sm + px) {
+    @content;
+  }
+}
+
+// フォントサイズ(vw指定)
+// --------------------
+@function _get-vw($size, $viewport: 375) {
+  $rate: 100 / $viewport;
+
+  @return $rate * $size * 1vw * 10;
+}
+
+// フォントサイズ
+// --------------------
+@mixin font-size($sizeValue, $type: pc) {
+  @if $type == 'pc' {
+    font-size: ($sizeValue * 10) + px;
+    font-size: ($sizeValue * 1) + rem;
+  } @else if $type == 'sp' {
+    font-size: $sizeValue * 10px;
+    font-size: _get-vw($sizeValue);
+  }
+}
+
+// // vw計算
+// // --------------------
+@function calc-vw($number) {
+  @return ($number / 750 * 100) + vw;
+}
+
+// トランジション
+// --------------------
+@mixin transition($property) {
+  transition-property: $property;
+  transition-duration: 0.6s;
+  transition-timing-function: $ease-out;
+}
+
+@mixin transition-ease-out($property, $duration: $transition-duration) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $ease-out;
+}
+
+// 最大幅にパディングを足す
+// --------------------
+@mixin max-width($width) {
+  max-width: $width + $gutter-default * 2;
+  padding-left: $gutter-default;
+  padding-right: $gutter-default;
+
+  @include mq-md {
+    padding-left: $gutter-default-md;
+    padding-right: $gutter-default-md;
+  }
+
+  @include mq-sm {
+    padding-left: $gutter-default-sm;
+    padding-right: $gutter-default-sm;
+  }
+}
+
+// placeholderのcss
+// --------------------
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+
+  &:placeholder-shown {
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+// hover
+// --------------------
+@mixin hover {
+  .hasHover &:hover {
+    @content;
+  }
+}
+
+@mixin mincho {
+  font-family: 'Hiragino Mincho ProN', 游明朝, 'Yu Mincho', YuMincho, HGS明朝E,
+    メイリオ, Meiryo, serif;
+
+  @media all and (-ms-high-contrast: none) {
+    font-family: HGS明朝E, メイリオ, Meiryo, serif;
+  }
+}
+
+@mixin box-shadow {
+  box-shadow: 0 1px 6px rgba(#000, 0.15);
+}
