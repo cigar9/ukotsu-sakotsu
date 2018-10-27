@@ -13,7 +13,6 @@
 </template>
 
 <script>
-/* eslint-disabled */
 import VueMarkdown from 'vue-markdown'
 import { createClient } from '~/plugins/contentful.js'
 

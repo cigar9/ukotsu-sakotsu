@@ -41,6 +41,7 @@ $header-height: 40px;
 
 .l-main {
   width: 80%;
+  max-width: 800px;
   margin: $header-height auto 0;
   display: block;
   padding: 3rem 0;
