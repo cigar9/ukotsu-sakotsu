@@ -1,5 +1,5 @@
 <template>
-  <header class="l-header">
+  <header>
     <nav class="p-navigation">
       <ul class="p-navigation__body">
         <li class="p-navigation__item">
@@ -20,11 +20,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.l-header {
-  background: #fff;
-  height: 40px;
-}
-
 .p-navigation {
   height: 100%;
   display: flex;
