@@ -43,16 +43,11 @@ $header-height: 40px;
   width: 80%;
   margin: $header-height auto 0;
   display: block;
-<<<<<<< HEAD
   padding: 3rem 0;
-=======
-  // padding: 0 0 2rem;
-  padding: 0 0 30rem;
   grid-area: main;
 }
 
 .l-footer {
   grid-area: footer;
->>>>>>> f19b39a33646be4e76791111c92b416760645cf9
 }
 </style>
