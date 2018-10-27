@@ -1,11 +1,11 @@
 <template>
-  <section class="slug">
-    <h1 class="slug_title">{{ post.fields.title }}</h1>
+  <article class="p-article">
+    <h1 class="p-article__ttl">{{ post.fields.title }}</h1>
     <!--<p class="slug_date">-->
     <!--{{ (new Date(post.fields.publishedAt)).toLocaleDateString() }}-->
     <!--</p>-->
     <vue-markdown>{{post.fields.body}}</vue-markdown>
-  </section>
+  </article>
 </template>
 
 <script>
@@ -44,20 +44,16 @@ export default {
 }
 </script>
 
-<style scoped>
-  .slug {
-    max-width: 800px;
-    margin: 0 auto;
-  }
+<style lang="scss" scoped>
+.p-article {
+  max-width: 800px;
+  margin: 0 auto;
 
-  .slug_title {
-    font-size: 2.0rem;
-    font-weight: bolder;
+  &__ttl {
+    @include font-size(2.6);
+    font-weight: bold;
+    font-family: "Sawarabi Mincho", serif;
+    letter-spacing: 0.1em;
   }
-
-  .slug_date {
-    font-size: 1.0rem;
-    color: rgb(57, 72, 85);
-    text-align: right;
-  }
+}
 </style>

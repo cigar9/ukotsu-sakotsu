@@ -22,6 +22,6 @@ export default {
   width: 80%;
   margin: 0 auto;
   display: block;
-  padding: 0 0 5rem;
+  padding: 3rem 0;
 }
 </style>
