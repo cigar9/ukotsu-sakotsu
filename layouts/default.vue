@@ -1,27 +1,58 @@
 <template>
-  <div>
-    <my-header/>
+  <div class="l-wrapper">
+    <the-header class="l-header"/>
     <main class="l-main">
       <nuxt/>
     </main>
+    <the-footer class="l-footer"/>
   </div>
 </template>
 
 <script>
-import myHeader from '~/components/Header.vue'
+import TheHeader from '~/components/TheHeader'
+import TheFooter from '~/components/TheFooter'
 
 export default {
   components: {
-    myHeader
+    TheHeader,
+    TheFooter
   }
 }
 </script>
 
 <style lang="scss" scoped>
+$header-height: 40px;
+
+.l-wrapper {
+  display: grid;
+  grid-template: 'header' auto 'main' 1fr 'footer' auto / 100%;
+  min-height: 100vh;
+}
+
+.l-header {
+  background: #fff;
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+}
+
 .l-main {
   width: 80%;
-  margin: 0 auto;
+  margin: $header-height auto 0;
   display: block;
+<<<<<<< HEAD
   padding: 3rem 0;
+=======
+  // padding: 0 0 2rem;
+  padding: 0 0 30rem;
+  grid-area: main;
+}
+
+.l-footer {
+  grid-area: footer;
+>>>>>>> f19b39a33646be4e76791111c92b416760645cf9
 }
 </style>
