@@ -62,7 +62,10 @@ module.exports = {
         '@/assets/sass/foundation/_variables.scss',
         '@/assets/sass/foundation/_mixin.scss'
       ]
-    ]
+    ],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-128207306-1'
+    }]
   ],
   /*
   ** Axios module configuration
