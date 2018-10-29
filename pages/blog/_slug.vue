@@ -25,7 +25,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: ''
+          content: this.post.fields.description
         }
       ]
     }
@@ -40,7 +40,7 @@ export default {
       order: '-sys.createdAt'
     }).then(entries => {
       return {
-        post: entries.items[0],
+        post: entries.items[0]
       }
     })
       .catch(console.error)

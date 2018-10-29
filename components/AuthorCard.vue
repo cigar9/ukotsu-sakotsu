@@ -14,7 +14,7 @@
 import VueMarkdown from 'vue-markdown'
 
 export default {
-  name: "AuthorCard",
+  name: 'AuthorCard',
   props: ['name', 'avatar', 'bio'],
   components: {
     VueMarkdown
@@ -39,6 +39,12 @@ export default {
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
+    background: #fff;
+
+    @include mq-sm {
+      width: 80px;
+      height: 80px;
+    }
 
     img {
       width: 100%;

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="categories">
-      <p>タグ一覧</p>
-      <ul class="categories__body">
-        <li v-for="tag in tags">
-          <nuxt-link v-bind:to="{ name: 'tag-slug', params: { slug: tag }}">{{tag}}</nuxt-link>
-        </li>
-      </ul>
-    </div>
+    <!--<div class="categories">-->
+    <!--<p>タグ一覧</p>-->
+    <!--<ul class="categories__body">-->
+    <!--<li v-for="tag in tags">-->
+    <!--<nuxt-link v-bind:to="{ name: 'tag-slug', params: { slug: tag }}">{{tag}}</nuxt-link>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
     <section class="index">
       <card v-for="post in posts"
         v-bind:key="post.fields.slug"
