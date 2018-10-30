@@ -25,6 +25,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/sawarabimincho.css' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/sawarabigothic.css' }
     ]
