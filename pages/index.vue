@@ -15,7 +15,8 @@
         :slug="post.fields.slug"
         :publishedAt="post.fields.publishedAt"
         :description="post.fields.description"
-        :tags="post.fields.tags"/>
+        :tags="post.fields.tags"
+        :author="post.fields.author.fields.name"/>
     </section>
   </div>
 
@@ -77,10 +78,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.index {
-  margin-top: 20px;
-}
-
 .categories {
   background: #f5f5f5;
   padding: 10px 20px;

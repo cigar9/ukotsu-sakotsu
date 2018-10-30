@@ -1,6 +1,6 @@
 <template>
   <article class="p-article">
-    <h1 class="p-article__ttl">{{ post.fields.title }}</h1>
+    <h1 class="p-article__ttl c-heading">{{ post.fields.title }}</h1>
     <div class="p-article__meta">
       <p class="p-article__date">
         {{ (new Date(post.fields.publishedAt)).toLocaleDateString() }}
@@ -9,6 +9,9 @@
       <p v-else class="p-article__author">written by Anonymous</p>
     </div>
     <vue-markdown class="p-article__body">{{post.fields.body}}</vue-markdown>
+    <p class="p-article__back-to-index">
+      <nuxt-link to="/">＜ 記事一覧へもどる</nuxt-link>
+    </p>
   </article>
 </template>
 
@@ -48,16 +51,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .p-article {
   max-width: 800px;
   margin: 0 auto;
+  padding-bottom: 4rem;
 
   &__ttl {
-    @include font-size(2.6);
-    font-weight: bold;
-    font-family: "Sawarabi Mincho", serif;
-    letter-spacing: 0.1em;
   }
 
   &__meta {
@@ -75,7 +75,15 @@ export default {
   }
 
   &__body {
-    margin-top: 2rem;
+    margin-top: 3rem;
+
+    p {
+      margin-top: 1.5em;
+    }
+  }
+
+  &__back-to-index {
+    margin-top: 4rem;
   }
 }
 </style>
