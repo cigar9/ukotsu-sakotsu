@@ -67,7 +67,8 @@ module.exports = {
     ],
     ['@nuxtjs/google-analytics', {
       id: 'UA-128207306-1'
-    }]
+    }],
+    '@nuxtjs/sitemap'
   ],
   /*
   ** Axios module configuration
@@ -102,5 +103,23 @@ module.exports = {
     CTF_SPACE_ID: ctfConfig.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: ctfConfig.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID
+  },
+
+  sitemap: {
+    path: '/sitemap.xml', // 出力パス
+    hostname: 'https://uko-sako.net',
+    cacheTime: 1000 * 60 * 15,
+    generate: true, // nuxt generate で静的ファイル出力する場合にはtrueにする
+    exclude: [ // 除外項目
+    ],
+    routes() { // ここで動的ページの出力をする
+      return cdaClient.getEntries({
+        'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
+      }).then(entries => {
+        return [
+          ...entries.items.map(entry => `/blog/${entry.fields.slug}`)
+        ]
+      })
+    }
   }
 }
