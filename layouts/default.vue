@@ -14,7 +14,6 @@
 import TheHeader from '~/components/TheHeader'
 import TheFooter from '~/components/TheFooter'
 
-let previous = window.scrollY
 
 export default {
   components: {
@@ -26,14 +25,12 @@ export default {
       hideHeader: false
     }
   },
-  methods: {
-    handleScroll() {
+  mounted() {
+    let previous = window.scrollY
+    window.addEventListener('scroll', () => {
       window.scrollY > previous ? this.hideHeader = true : this.hideHeader = false
       previous = window.scrollY
-    }
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+    })
   }
 }
 </script>
