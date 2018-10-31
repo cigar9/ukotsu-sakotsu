@@ -1,6 +1,8 @@
 <template>
   <div class="l-wrapper">
-    <the-header class="l-header"/>
+    <the-header
+      class="l-header"
+      :class="{'is-hide': hideHeader}"/>
     <main class="l-main">
       <nuxt/>
     </main>
@@ -12,10 +14,26 @@
 import TheHeader from '~/components/TheHeader'
 import TheFooter from '~/components/TheFooter'
 
+let previous = window.scrollY
+
 export default {
   components: {
     TheHeader,
     TheFooter
+  },
+  data() {
+    return {
+      hideHeader: false
+    }
+  },
+  methods: {
+    handleScroll() {
+      window.scrollY > previous ? this.hideHeader = true : this.hideHeader = false
+      previous = window.scrollY
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -37,6 +55,11 @@ $header-height: 40px;
   left: 0;
   width: 100%;
   height: $header-height;
+  @include transition(top);
+
+  &.is-hide {
+    top: -#{$header-height};
+  }
 }
 
 .l-main {
