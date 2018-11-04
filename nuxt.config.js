@@ -21,10 +21,12 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { name: 'google-site-verification', content: 'ovt_lN-nWSpczoxufhCRaxsLHfoPhObprf5b0qWsMDk' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/sawarabimincho.css' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/sawarabigothic.css' }
     ]
@@ -62,7 +64,11 @@ module.exports = {
         '@/assets/sass/foundation/_variables.scss',
         '@/assets/sass/foundation/_mixin.scss'
       ]
-    ]
+    ],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-128207306-1'
+    }],
+    '@nuxtjs/sitemap'
   ],
   /*
   ** Axios module configuration
@@ -97,5 +103,23 @@ module.exports = {
     CTF_SPACE_ID: ctfConfig.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: ctfConfig.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID
+  },
+
+  sitemap: {
+    path: '/sitemap.xml', // 出力パス
+    hostname: 'https://uko-sako.net',
+    cacheTime: 1000 * 60 * 15,
+    generate: true, // nuxt generate で静的ファイル出力する場合にはtrueにする
+    exclude: [ // 除外項目
+    ],
+    routes() { // ここで動的ページの出力をする
+      return cdaClient.getEntries({
+        'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
+      }).then(entries => {
+        return [
+          ...entries.items.map(entry => `/blog/${entry.fields.slug}`)
+        ]
+      })
+    }
   }
 }

@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://loving-haibt-f9ca69.netlify.com/* https://uko-sako.net/:splat 301!

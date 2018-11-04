@@ -4,7 +4,8 @@
       <h1 class="p-card__ttl">{{ title }}</h1>
       <div class="p-card__meta">
         <p class="p-card__date">{{ (new Date(publishedAt)).toLocaleDateString() }}</p>
-        <ul class="p-card__tags">
+        <p class="p-card__author">Written by {{ author }}</p>
+        <ul class="p-card__tags" v-if="tags">
           <li v-for="tag in tags" class="p-card__tag">{{ tag }}</li>
         </ul>
       </div>
@@ -16,7 +17,7 @@
 <script>
 
 export default {
-  props: ['title', 'slug', 'publishedAt', 'description', 'tags']
+  props: ['title', 'slug', 'publishedAt', 'description', 'tags', 'author']
 }
 </script>
 
@@ -48,10 +49,19 @@ export default {
 
     > * ~ * {
       margin-left: 1rem;
+
+      &::before {
+        content: '/';
+        margin-right: 1rem;
+      }
     }
   }
 
   &__date {
+    color: $font-color-light;
+  }
+
+  &__author {
     color: $font-color-light;
   }
 

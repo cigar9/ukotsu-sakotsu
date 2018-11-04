@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="categories">
-      <p>タグ一覧</p>
-      <ul class="categories__body">
-        <li v-for="tag in tags">
-          <nuxt-link v-bind:to="{ name: 'tag-slug', params: { slug: tag }}">{{tag}}</nuxt-link>
-        </li>
-      </ul>
-    </div>
+    <!--<div class="categories">-->
+    <!--<p>タグ一覧</p>-->
+    <!--<ul class="categories__body">-->
+    <!--<li v-for="tag in tags">-->
+    <!--<nuxt-link v-bind:to="{ name: 'tag-slug', params: { slug: tag }}">{{tag}}</nuxt-link>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
     <section class="index">
       <card v-for="post in posts"
         v-bind:key="post.fields.slug"
@@ -15,7 +15,8 @@
         :slug="post.fields.slug"
         :publishedAt="post.fields.publishedAt"
         :description="post.fields.description"
-        :tags="post.fields.tags"/>
+        :tags="post.fields.tags"
+        :author="post.fields.author.fields.name"/>
     </section>
   </div>
 
@@ -77,10 +78,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.index {
-  margin-top: 20px;
-}
-
 .categories {
   background: #f5f5f5;
   padding: 10px 20px;
