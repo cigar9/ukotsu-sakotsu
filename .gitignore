@@ -83,3 +83,4 @@ dist
 # contentful config
 .contentful.json
 .env
+/article.md

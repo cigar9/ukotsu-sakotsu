@@ -16,6 +16,7 @@
 </template>
 
 <script>
+const pkg = require('~/package')
 import VueMarkdown from 'vue-markdown'
 import { createClient } from '~/plugins/contentful.js'
 
@@ -23,7 +24,7 @@ const client = createClient()
 export default {
   head() {
     return {
-      title: this.post.fields.title,
+      title: `${this.post.fields.title} | ${pkg.name}`,
       meta: [
         {
           hid: 'description',

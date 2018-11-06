@@ -46,19 +46,6 @@ const getTags = (entries) => {
 }
 
 export default {
-  head() {
-    return {
-      title: 'ukotsu-sakotsu',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'ukotsuとsakotsuのブログ'
-        }
-      ]
-    }
-
-  },
   components: {
     Card
   },

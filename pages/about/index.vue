@@ -15,6 +15,7 @@
 </template>
 
 <script>
+const pkg = require('~/package')
 import { createClient } from '~/plugins/contentful.js'
 import AuthorCard from '~/components/AuthorCard'
 import _ from 'lodash'
@@ -23,6 +24,18 @@ const client = createClient()
 
 export default {
   name: 'index',
+  head() {
+    return {
+      title: `About | ${pkg.name}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: '当サイトは Ukotsu と Sakotsu の二人が送るブログサイトです。'
+        }
+      ]
+    }
+  },
   components: {
     AuthorCard
   },

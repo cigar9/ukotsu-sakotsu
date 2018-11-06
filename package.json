@@ -1,7 +1,7 @@
 {
-  "name": "ukotsu-sakotsu",
+  "name": "Ukotsu-Sakotsu",
   "version": "1.0.0",
-  "description": "My mind-blowing Nuxt.js project",
+  "description": "UkotsuとSakotsuのブログ",
   "author": "cigar9",
   "private": true,
   "scripts": {
