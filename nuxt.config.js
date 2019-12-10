@@ -58,18 +58,20 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    [
-      'nuxt-sass-resources-loader',
-      [
-        '@/assets/sass/foundation/_variables.scss',
-        '@/assets/sass/foundation/_mixin.scss'
-      ]
-    ],
     ['@nuxtjs/google-analytics', {
       id: 'UA-128207306-1'
     }],
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+    scss: [
+      '@/assets/sass/foundation/_variables.scss',
+      '@/assets/sass/foundation/_mixin.scss'
+    ]
+  },
+
   /*
   ** Axios module configuration
   */
