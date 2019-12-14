@@ -58,7 +58,11 @@ export default {
   margin: 0 auto;
   padding-bottom: 4rem;
 
-  &__ttl {
+  h2 {
+    @include font-size(2);
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: -0.5em;
   }
 
   &__meta {
