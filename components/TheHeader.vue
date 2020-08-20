@@ -1,6 +1,6 @@
 <template>
   <header class="l-header">
-    <the-navigation/>
+    <the-navigation />
   </header>
 </template>
 
